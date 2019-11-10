@@ -1,0 +1,444 @@
+2.  Here are a few git and GitHub commands we usually use in software development,
+     please explain the meanings and use cases of them.
+     ● git status
+	這個指令是用來查詢當前目錄的狀態
+	ex:  git status
+	    result:  On branch master
+		         Your branch is up to date with 'origin/master'.
+		         nothing to commit, working tree clean
+     ● git add
+	這個指令是將工作資料夾(working directory)內的檔案新增到暫存區(staging area)內，讓Git可以追蹤它
+	ex:  git add Hello.txt
+		result: Your branch is up to date with 'origin/master'.
+				Changes to be committed:
+				(use "git restore --staged <file>..." to unstage)
+					new file:   Hello.txt
+     ● git commit
+	這個指令是將暫存區(staging area)內的檔案提交到儲存庫(repositories)內存檔
+	ex: 	git commit -m “init commit”  (commit 後的 -m “init commit” 是要說明這次commit做了什麼事)
+		result:	[master 79f88ff] init commit
+				1 file changed, 0 insertions(+), 0 deletions(-)
+				create mode 100644 Hello.txt
+     ● git log
+	這個指令可以用來檢視歷史紀錄(大致可看出: 1.是誰commit 2.什麼時候commit 3. Commit了什麼事)
+	ex:	git log 
+		result:	commit 79f88ff4c2ca0a3b761d18f0c8210ce6ae61074d (HEAD -> master)
+				Author: neal811220 <neal811220@gmail.com>
+				Date:   Thu Nov 7 22:20:06 2019 +0800
+					init commit
+     ● git push [ Repo_name ] [ Branch_name ]
+	這個指令用來將本地儲存庫檔案上傳到遠端儲存庫
+	ex:	git push origin master (將master分支的內容推向origin的位置)
+		result:	Enumerating objects: 3, done.
+					Counting objects: 100% (3/3), done.
+					Writing objects: 100% (3/3), 234 bytes | 234.00 KiB/s, done.
+					Total 3 (delta 0), reused 0 (delta 0)
+					To https://github.com/neal811220/RemoteLearningAssignment.git
+ 					* [new branch]      master -> master
+					Branch 'master' set up to track remote branch 'master' from 'origin'.
+
+     ● git remote -v
+	這個指令可顯示遠端儲存庫的詳細情況
+	ex: 	git remote -v
+		result:	origin	https://github.com/raywenderlich/rwTODOs.git (fetch)
+				origin	https://github.com/raywenderlich/rwTODOs.git (push)
+     ● git branch
+	這個指令可以看到目前總共有幾個分支，預設通常為master(在不同分支上工作可以同時進行不同的修改，最後再進行合併)
+	ex:	git branch
+		result:	* master
+
+     ● fork
+	可以從其他人的GitHub專案上fork完整的專案內容到自己的GitHub帳號內，讓自己可以取得完整的權限，fork後可以從自己的專案
+	Clone下來進行編輯檔案，完成後再重新 add -> commit -> push(到自己fork的專案)，在PR給原作者(並可填寫修改內容)，最後原作者
+	在Review後確認是否合併這次的commit
+
+
+3.  Please describe how to establish a github repo and how to upload the local projects
+     to github. Try to explain it as detail as possible
+	1.建立 GitHub Repo: 	首先到GitHub官網建立個人帳號(填入帳號,密碼,信箱)，帳號建立後點擊右上角個人圖示，
+	點擊下方的 Your repositories 選單會顯示個人的Repositories 列表，點擊右上角的 New 按鈕進入 Create a new repository，
+	需填欄位：	Repository name(輸入你的Repository 名稱)
+			Description(非必填，可輸入此Repository的描述)
+			Public / Private(選擇Public: 任何人都可以看到此儲存庫，可選擇誰可以commit,  選擇Private: 為私人儲存庫需付費，可選擇誰可以看到並commit)
+			Initialize this repository with a README(README是專案的預設說明頁面，可選擇系統直接建立，若不選擇也可事後自己建立)
+			Add .gitignore (可選擇哪些檔案不加入版本管理，預設為None 檔案都加入版本管理)
+			Add license(檔案授權使用權限設定，如果選擇為None 為不公開授權使用，其他人若使用此檔案需自行負責，常用的選項列如：
+					   MIT License，代表檔案可以供其他人使用在任何用途，甚至修改 )
+	以上欄位選填完後，即可點擊Create repository 按鈕創建 儲存庫
+
+	2. 上傳本地端檔案至GitHub:  
+			1.在開始使用 Git 時先設定好使用者名稱及信箱
+			ex:	設定帳號	git	config --global user.name “neal811220”
+				設定信箱	git	config —-global user.email “neal811220@gmail.com”
+			2.在本地端建立資料夾及要上傳到 GitHub 的檔案
+			3. 打開終端機 cd 到資料夾後，執行 git init 指令(將此資料夾初始化後，並交給Git進行版本管控)
+			4. 執行 git add xxx(xxx 為要add進暫存區的檔案名稱)，將檔案新增到暫存區
+			5. 執行 git commit -m “xxx” (xxx為此次commit 的說明)，將暫存區的檔案加入到儲存庫內存擋
+			6. 執行 git remote add origin https://xxxx (設定遠端節點名稱，origin為遠端節點名稱，https://xxxx為遠端節點URL)
+			7. 執行 git push -u origin master (將master分支的內容推到origin的位置)
+			8. 完成檔案上傳
+————————————————————————————————————————————
+
+Basic
+1.  In swift , we usually define a variable through the syntax as below:
+
+var​ x:Int​ = 10​
+
+    When calculating circle’s area, we use the formula: 2 * radius * Pi to get area. 
+    Now, please define a variable Pi and assign a value to it. You can refer to the syntax
+    above while do think about using var ​or ​let ​and which data type it should be.
+
+	var pi:Int = 10
+
+2.  Create two constants x and y of type Int then assign any value to them. After that,
+     please calculate the average of x and y and store the result in a constant named
+     average.
+	
+	let x:Int = 10
+	let y:Int = 20
+	var average = (x + y) / 2 	
+
+3.  Following with Q2, now we want to save the average in a record system, but the
+     system doesn’t accept 65 but 65.0
+
+     ● Please solve this problem so that we can put the average in the record
+     system
+	
+	var recordSystem = Double(average)
+
+     ● Please explain the difference between ( 10 / 3 ) and ( 10.0 / 3.0 )
+	
+	(10/3) = 3 ，因為類型為整數型別，故除不盡之小數點會被去除只留下整數
+	(10.0/3.0) = 3.3333333333333335 因為類型為帶有小數點的浮點數，故除不盡之小數點會被留下顯示出來
+
+4.  Swift is a very powerful language that it can infer the data type for you (Type
+     inference ) while we still need to know the basics well. Please change the following
+     codes into the one with data type.
+
+     Ex: var​ x = ​10​ => ​var​ x: Int​ = ​10​
+
+  var​ flag = ​true
+  var​ inputString = ​"Hello world."
+  let​ bitsInBite = ​8
+  let​ averageScore = ​86.8
+
+	var flag: Bool = true
+	var inputString: String = “Hello world.”
+	let bitsInBite: Int = 8
+	let averageScore: Double = 86.8
+
+5.  Compound assignment operator is very useful when programming. Please create
+     salary as 22000, and use  unary plus operator adding 28000 to salary, and it will be
+     50000 after this process.
+
+	var salary = 22000
+	salary += 28000
+
+6. You should notice that  ‘=’ ​ has difference meaning in programming. In real world,  ‘=’ 
+    means equal while In programming,  ‘=’  means assign. You simply put the right hand
+    side data into left hand side variable or constant.
+
+    Now please write down the Equality operator in swift
+
+	var rightHand = 10
+	var leftHand = rightHand
+
+7. Declare two constants that values are 10 and 3 each, then please calculate the
+remainder and save the result in a constant named remain.
+	
+	let number1 = 10 
+	let number2 = 3
+	let remain = 10 % 3
+
+8. Please explain the difference between let and var.
+
+	用 var 宣告的變數裡面的值之後可以被改變，可以被重新指派新的值(若不同型別須轉換型別)
+	用 let  宣告的常數裡面的值之後不能被改變，若要改變就會跳出錯誤
+	var 通常用來宣告會變動不固定的值，let 則宣告於一旦賦值就不會變動的常數
+
+9. Please write down naming conventions and rules you learned in this session.
+	
+	1.盡量以完整單字不要縮寫，且讓人能一眼看出命名的目的
+	2.若有多個單字組成的變數或常數名稱，每個單字字首都為大寫，但第一個單字除外(型別名稱字首為大寫，用以區別一般常數變數與型別)
+	3.同區域內不能有兩個同名稱的常數變數
+	
+10. What is Type Inference in swift?
+
+	若能在宣告時給予初始值，swift將會依據初始值自動判斷型別
+
+11. What is the problem about this piece of code?
+
+var​ phoneNumber = ​0987654321
+phoneNumber​ =​ "Hello world."
+
+    phoneNumber的初始值為純數字沒有””包著，系統自動判斷型別為Int，
+    但是後來指派的值”Hello world.”是字串，無法指派給不同型別的變數
+
+————————————————————————————————————————————
+
+
+Collection
+
+You should know how to declare an array in swift, and also how to add, remove, insert,
+read object in an array. You should be familiar with the following syntax :  append, insert,
+remove.
+
+Array is a dangerous stuff in swift. If you access the array with index which is out of range,
+your app will crash with fatal error. Please interact with array very carefully.
+
+
+1. Please create an empty array with String data type and save it in a variable named
+    myFriends.
+
+	var myFriends = [String]()
+
+2. According to Q1, now I have three friends, ‘Ian’, ‘Bomi’, and ‘Kevin’. Please help me
+    to add their name in to myFriends array.
+	
+	myFriends.append(contentsOf: [“Ian”, “Bomi”, “Kevin”])
+
+3. Oops,I forget to add ‘Michael’ who is one of my best friend, please help me to add
+    Michael to the end of myFriends array.
+	
+	myFriends.append(“Michael”)
+
+4. Because I usually hang out with Kevin, please move Kevin to the beginning of the
+    myFriends array.
+
+	myFriends = [“Kevin”, “Ian”, “Bomi”, “Michael”]
+	
+5. Use for...each to print all the friend in myFriends array.
+	
+	for i in myFriends {
+	   print(i)
+	}
+
+6. Now I want to know who is at index 5 in the myFriends array, try to find the answer
+    for me. Please explain how did you get the answer and why the answer is it.
+	
+	使用 myFriends [5] 取得 在myFriend Array 中的 index 5，
+	但因 Array 裡的 取碼是從0開始，現在Array 裡的成員只有四個，所以index只能取到3，
+	若取不存在的index值就會發生錯誤
+
+7. How to get the first element in an array?
+	
+	if let firstArray = myFriends.first {
+		print(firstArray)
+	}
+
+8. How to get the last element in an array?
+	
+	if let firstArray = myFriends.last {
+		print(firstArray)
+	}
+
+9. Please create an dictionary with keys of type String, value of type Int, and save it in a
+    variable named myCountryNumber.
+	
+	var myCountryNumber = [String:Int]()
+
+10. Please add three keys ‘US’, ‘GB’, ‘JP’ with values 1, 44 , 81.
+	
+	myCountryNumber[“US”] = 1
+	myCountryNumber[“GB”] = 44
+	myCountryNumber[“JP”] = 81
+
+11. Change the ‘GB’ value from 44 to 0.
+	
+	myCountryNumber[“GB”] = 0
+
+12. How to declare a empty dictionary?
+	
+	var myCountryNumber = [String:Int]()
+	var myCountryNumber = Dictionary<String, Int>()
+	var myCountryNumber:[String:Int] = Dictionary()
+	var myCountryNumber:[String:Int] = [:]
+
+13. How to remove a key-value pair in a dictionary?
+	myCountry,removeValue{forKey: “US”}
+
+————————————————————————————————————————————
+
+
+Control Flow
+
+1. Here is an array:
+
+let​ lottoNumbers = [​10​, ​9​, ​8​, ​7​, ​6​, ​5​]
+
+Please use For-Loop and Range to print the last three members in the lottoNumbers
+array.
+
+	for i in (lottoNumbers.count-3)…(lottoNumber.count-1) {
+		print(lottoNumbers[i])
+	}
+
+2. When use for-in loop, we make the computer do the same thing multiple times. The
+    index is increasing by 1. What if we want to decreasing by -1 ? What if we want to
+    increasing by 2 ? Please use swift syntax to get the result as images list below :
+
+5                                                                                
+6                                                                                
+7                                                                                
+8                                                                                
+9                                                                                
+10                                                                              
+
+10                                                                              
+8                                                                                
+6                                                                                
+	
+
+Please find a method which can help us complete these requirements.
+
+	遞減1:
+	for i in stride(from: 10, to: 5, by: -1) {
+		print(i)
+	}
+遞增2:
+	for i in stride(from: 10, to: 20, by: 2) {
+		print(i)
+	}
+
+3. Please use while loop to solve above question.
+	
+	question1:
+	let lottoNumbers = [10, 9, 8, 7, 6, 5]
+	var sum = lottonNumbers.count -3
+
+	while sum < (lottoNumbers.count) {
+		print(lottonNumbers[sum])
+		sum = sum + 1
+	}
+
+
+	question2:
+	遞減1:
+	var number = 11
+	while number > 5 {
+		number -= 1
+		print(number)
+	}
+	
+	遞增2:
+	var number = 4
+	while number < 10 {
+		number += 2
+		print(number)
+	}
+	
+
+4. Please use repeat-while loop to solve question 2.
+
+	遞減1:
+	var number = 11
+	repeat {
+		number -= 1
+		print(number)
+	}while   number > 5
+
+	遞增2:
+	var number = 4
+	repeat {
+		number += 2
+		print(number)
+	}while   number < 10
+	
+
+5. What are the differences between while and repeat-while?
+
+	兩者的差別在於repeat while 會先執行過一次再檢查條件是否成立，而while 則是會先檢查，
+	如果條件不符合將不執行
+
+6. Here is variable isRaining to record the weather. Please write a statement that if the
+    weather is raining, print “It’s raining, I don’t want to work today.”, otherwise print
+    “Although it’s sunny, I still don’t want to work today.”
+
+	var isRaining = “sunny”
+	var rain = “It’s raining, I don’t want to work today.”
+	var sunny = “Although it’s sunny, I still don’t want to work today.”
+
+	if isRaining == “sunny” {
+		print(sunny)
+	}else{
+		print(rain)
+	}
+
+7. In a company, we usually use numbers to represent job levels. Let’s make a
+    example. We have four job levels : Member, Team Leader, Manager, Director. We
+    use 1 to present Member, 2 to Team Leader, 3 to Manager, 4 to Director.
+    Now, create a variable name jobLevel and assign a number to it. If jobLevel number
+    is in our list, print the relative job title name; if not, just print “We don't have this job”.
+    Please use switch statement to complete this requirement.
+
+	let member = 1
+	let teamLeader = 2
+	let manager = 3
+ 	let director = 4
+	var jobLevel = 1
+
+	switch jobLevel {
+	
+	case   member:
+		print(“member”)
+	case   teamLeader:
+		print(“teamLeader”)
+	case   manager:
+		print(“manager”)
+	case   director:
+		print(“director”)
+	default:
+		print(“We don't have this job”)
+	}
+
+
+————————————————————————————————————————————
+
+
+Function
+
+1. Please declare a function named greet with person as argument label and name as
+parameter name. This greet function will return a String. For example, if you call the
+function greet like this: 
+
+   greet​(person: ​"Celeste"​)
+
+       It will return string: “Hello, Celeste”.
+
+	func greet(person name: String) -> String {
+		var name = person
+		print(“Hello, \(name)”)
+		return name
+	}
+
+2. Please declare a function named multiply with two argument a , b , and with no return
+value that when you call this function, compiler will print out  the result of a * b. Be
+noticed that we want to give argument b with a default value 10.
+
+	func multiply(a: Int, b: Int = 10) {
+		print(a * b)
+	}
+
+3. What’s the difference between argument label and pararmeter label in function ?
+
+	argument label 是函式在呼叫時所使用的參數名稱，讓呼叫人比較容易知道意思
+	pararmeter label 是函式在內部存取參數時使用
+
+4. What are the return type in the following statements?
+
+
+	func birthday( ) -> String {           
+}
+	回傳字串類型                                                            
+      						        
+	func payment( ) -> Double {       
+	
+	回傳浮點數類型					        
+}						        
+
+
+
+
+
+
+
